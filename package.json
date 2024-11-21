@@ -1,0 +1,21 @@
+{
+  "name": "playwright-github-action",
+  "version": "1.0.0",
+  "description": "playwirght action to run tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "playwright",
+    "e2e-tests",
+    "automation-test",
+    "playwright-action"
+  ],
+  "author": "Sumanth T P",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/exec": "^1.1.1"
+  }
+}

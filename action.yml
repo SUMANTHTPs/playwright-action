@@ -1,0 +1,30 @@
+name: "Run Playwright Tests"
+description: "A GitHub Action to run Playwright tests"
+author: "Sumanth T P"
+inputs:
+  node-version:
+    description: "Node.js version to use"
+    required: false
+    default: "18"
+  testDir:
+    description: "Folder containing your Playwright tests"
+    required: false
+    default: "./tests"
+  project:
+    description: "Playwright project name to run"
+    required: false
+    default: ""
+  workers:
+    description: "Number of workers to run"
+    required: false
+    default: 1
+  retries:
+    description: "Number of retries for Playwright tests"
+    required: false
+    default: 0
+runs:
+  using: "node16"
+  main: "index.js"
+branding:
+  icon: "play"
+  color: "blue"
