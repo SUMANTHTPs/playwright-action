@@ -6,7 +6,8 @@ async function run() {
     const nodeVersion = core.getInput('node-version') || '18';
     const testFolder = core.getInput('test-folder') || './tests';
     const project = core.getInput('project') || '';
-    const workers = core.getInput('workers') || '';
+    const workers = core.getInput('workers') || 1;
+    const retries = core.getInput('retries') || 0;
 
     console.log(`Using Node.js version: ${nodeVersion}`);
     console.log(`Running tests in folder: ${testFolder}`);
