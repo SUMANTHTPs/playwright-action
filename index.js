@@ -29,7 +29,6 @@ async function run() {
     if (retries !== 0) {
         testCommand.push('--retries', retries);
     }
-    testCommand.push('--headless=true');
     testCommand.push(testFolder);
 
     // Run Playwright tests
