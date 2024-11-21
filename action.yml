@@ -1,4 +1,4 @@
-name: "Run Playwright Tests"
+name: "Playwright test runner"
 description: "A GitHub Action to run Playwright tests"
 author: "Sumanth T P"
 inputs:
