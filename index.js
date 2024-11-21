@@ -9,7 +9,6 @@ async function run() {
     const retries = core.getInput('retries') || '0'; // Default to '0' as a string
 
     console.log(`Using Node.js version: ${nodeVersion}`);
-    console.log(`Running tests in folder: ${testFolder}`);
     console.log(`Using ${workers} workers`);
     console.log(`Retries set to: ${retries}`);
 
