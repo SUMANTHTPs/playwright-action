@@ -4,7 +4,6 @@ const exec = require('@actions/exec');
 async function run() {
   try {
     const nodeVersion = core.getInput('node-version') || '18';
-    const testDir = core.getInput(testDir) || './tests';
     const project = core.getInput('project') || '';
     const workers = core.getInput('workers') || '1'; // Default to '1' as a string
     const retries = core.getInput('retries') || '0'; // Default to '0' as a string
@@ -23,9 +22,6 @@ async function run() {
     // Run Playwright tests
     const testCommand = ['npx', 'playwright', 'test'];
     
-    // Add the test folder
-    testCommand.push(testDir);
-
     // Add components
     if (project) {
       testCommand.push(`--project=${project}`);

@@ -6,10 +6,6 @@ inputs:
     description: "Node.js version to use"
     required: false
     default: "18"
-  testDir:
-    description: "Folder containing your Playwright tests"
-    required: false
-    default: "./tests"
   project:
     description: "Playwright project name to run"
     required: false
