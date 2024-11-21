@@ -17,11 +17,11 @@ inputs:
   workers:
     description: "Number of workers to run"
     required: false
-    default: 1
+    default: "1"
   retries:
     description: "Number of retries for Playwright tests"
     required: false
-    default: 0
+    default: "0"
 runs:
   using: "node16"
   main: "index.js"

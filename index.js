@@ -6,11 +6,13 @@ async function run() {
     const nodeVersion = core.getInput('node-version') || '18';
     const testFolder = core.getInput('test-folder') || './tests';
     const project = core.getInput('project') || '';
-    const workers = core.getInput('workers') || 1;
-    const retries = core.getInput('retries') || 0;
+    const workers = core.getInput('workers') || '1'; // Default to '1' as a string
+    const retries = core.getInput('retries') || '0'; // Default to '0' as a string
 
     console.log(`Using Node.js version: ${nodeVersion}`);
     console.log(`Running tests in folder: ${testFolder}`);
+    console.log(`Using ${workers} workers`);
+    console.log(`Retries set to: ${retries}`);
 
     // Install dependencies
     await exec.exec('npm', ['ci']);
@@ -20,16 +22,30 @@ async function run() {
 
     // Run Playwright tests
     const testCommand = ['npx', 'playwright', 'test'];
+
+    // Add project if specified
     if (project) {
-      testCommand.push('--project', project);
+      testCommand.push('--project=', project);
     }
-    if (workers) {
-      testCommand.push('--workers', project);
+
+    // Add workers if specified (ensure it’s a valid number)
+    if (workers && !isNaN(workers)) {
+      testCommand.push('--workers=', workers);
+    } else {
+      console.warn('Invalid workers value, using default of 1');
+      testCommand.push('--workers=', '1'); // Ensure fallback value
     }
-    if (retries !== 0) {
-        testCommand.push('--retries', retries);
+
+    // Add retries if specified (ensure it’s a valid number)
+    if (retries && !isNaN(retries)) {
+      testCommand.push('--retries=', retries);
+    } else {
+      console.warn('Invalid retries value, using default of 0');
+      testCommand.push('--retries=', '0'); // Ensure fallback value
     }
-    testCommand.push(testFolder);
+
+    // Add the test folder
+    testCommand.push('--project=',testFolder);
 
     // Run Playwright tests
     await exec.exec(testCommand.join(' '));
