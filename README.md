@@ -30,7 +30,10 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Run Playwright Tests
-      uses: <your-username>/playwright-action@v1
+      uses: sumanthtps/playwright-action@<version>
       with:
         node-version: '18'
-        test-folder: './tests'
+        retries: 2
+        workers: 3
+        project: "projectName"
+
